@@ -6,14 +6,14 @@
 #    By: rrouille <rrouille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:27:55 by rrouille          #+#    #+#              #
-#    Updated: 2022/11/12 19:12:18 by rrouille         ###   ########.fr        #
+#    Updated: 2022/11/19 14:36:01 by rrouille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Folders
 SRCDIR		= srcs
-OBJDIR		= objs
-HDRDIR		= includes
+OBJDIR		= ../objs
+HDRDIR		= ../includes
 
 # Files
 SRCS		= ${shell find ${SRCDIR} -name '*.c'}
@@ -51,6 +51,7 @@ FTTODIR		= to
 FTSTRDIR	= str
 FTLSTDIR	= lst
 FTMATHDIR	= math
+FTPRINTDIR	= print
 
 # First rule
 all:		${NAME}
@@ -69,6 +70,7 @@ ${OBJDIR}%.o : ${SRCDIR}%.c
 			@mkdir -p ${OBJDIR}/${FTSTRDIR}
 			@mkdir -p ${OBJDIR}/${FTLSTDIR}
 			@mkdir -p ${OBJDIR}/${FTMATHDIR}
+			@mkdir -p ${OBJDIR}/${FTPRINTDIR}
 			@echo "${YELLOW}Compiling: $< ${DEFCOLOR}"
 			@${CC} ${CFLAGS} -I ${HDRDIR} -c $< -o $@
 
