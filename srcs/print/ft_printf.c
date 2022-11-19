@@ -6,7 +6,7 @@
 /*   By: rrouille <rrouille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:34:59 by rrouille          #+#    #+#             */
-/*   Updated: 2022/11/19 14:57:40 by rrouille         ###   ########.fr       */
+/*   Updated: 2022/11/19 18:08:01 by rrouille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 *			is mainly about variable size arguments.
 */
 
-#include "ft_printf.h"
+#include "mylib.h"
 
 /**
 * @notice	This function links and converts the character next to '%' to the
