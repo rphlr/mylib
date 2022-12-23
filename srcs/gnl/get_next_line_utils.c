@@ -6,19 +6,11 @@
 /*   By: rrouille <rrouille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:52:32 by rrouille          #+#    #+#             */
-/*   Updated: 2022/12/23 20:53:03 by rrouille         ###   ########.fr       */
+/*   Updated: 2022/12/23 21:03:03 by rrouille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mylib.h"
-
-t_list	*ft_lstlast(t_list *lst);
-t_list	*trim_last_list_element(t_list **lst);
-char	*trim_last_list_element_helper(t_list *last, int i);
-bool	found_new_line(t_list *stash);
-void	free_stash(t_list *stash);
-void	append_buffer_to_stash(t_list **stash, char *buffer, int num_bytes);
-void	generate_line(char **line, t_list *stash);
 
 /**
  * @brief	Finds the last element in a linked list.

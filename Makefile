@@ -6,7 +6,7 @@
 #    By: rrouille <rrouille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:27:55 by rrouille          #+#    #+#              #
-#    Updated: 2022/12/23 21:01:27 by rrouille         ###   ########.fr        #
+#    Updated: 2022/12/23 21:04:44 by rrouille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -93,7 +93,7 @@ fclean:		clean
 git:
 			@git add *
 			@echo "${CYAN}Added files to git !${DEFCOLOR}"
-			@git commit -m "Auto-commit"
+			@git commit -m "Added GNL!"
 			@echo "${BLUE}Commited !${DEFCOLOR}"
 			@git push
 			@echo "${GREEN}All changed are on github!${DEFCOLOR}"

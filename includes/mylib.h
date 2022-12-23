@@ -104,5 +104,11 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 // gnl
 char	*get_next_line(int fd);
+t_list	*trim_last_list_element(t_list **lst);
+char	*trim_last_list_element_helper(t_list *last, int i);
+bool	found_new_line(t_list *stash);
+void	free_stash(t_list *stash);
+void	append_buffer_to_stash(t_list **stash, char *buffer, int num_bytes);
+void	generate_line(char **line, t_list *stash);
 
 #endif
