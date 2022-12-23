@@ -6,7 +6,7 @@
 #    By: rrouille <rrouille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:27:55 by rrouille          #+#    #+#              #
-#    Updated: 2022/11/20 14:25:49 by rrouille         ###   ########.fr        #
+#    Updated: 2022/12/23 21:01:27 by rrouille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,7 @@ FTSTRDIR	= str
 FTLSTDIR	= lst
 FTMATHDIR	= math
 FTPRINTDIR	= print
+FTGNLDIR	= gnl
 
 # First rule
 all:		${NAME}
@@ -71,6 +72,7 @@ ${OBJDIR}%.o : ${SRCDIR}%.c
 			@mkdir -p ${OBJDIR}${FTLSTDIR}
 			@mkdir -p ${OBJDIR}${FTMATHDIR}
 			@mkdir -p ${OBJDIR}${FTPRINTDIR}
+			@mkdir -p ${OBJDIR}${FTGNLDIR}
 			@echo "${YELLOW}Compiling: $< ${DEFCOLOR}"
 			@${CC} ${CFLAGS} -I ${HDRDIR} -c $< -o $@
 
@@ -85,7 +87,16 @@ clean:
 
 fclean:		clean
 			@${RM} ${NAME}
-			@echo "${CYAN}Library executable files cleaned!${DEFCOLOR}"
+			@echo "${CYAN}Library executable files cleaned!${DEFCOLOR}"\
+
+# Git repo maker
+git:
+			@git add *
+			@echo "${CYAN}Added files to git !${DEFCOLOR}"
+			@git commit -m "Auto-commit"
+			@echo "${BLUE}Commited !${DEFCOLOR}"
+			@git push
+			@echo "${GREEN}All changed are on github!${DEFCOLOR}"
 
 re:			fclean all
 			@echo "${GREEN}Cleaned and rebuilt the library correctly !${DEFCOLOR}"

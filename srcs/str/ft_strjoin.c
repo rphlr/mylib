@@ -12,6 +12,13 @@
 
 #include "mylib.h"
 
+/**
+ * @brief	Concatenates two given strings into a new string.
+ * @return	A pointer to the new concatenated string, or NULL if the strings
+ * 			could not be concatenated.
+ * @param	const_char_ptr	The first string to concatenate.
+ * @param	const_char_ptr	The second string to concatenate.
+ */
 char	*ft_strjoin(const char *s1, const char *s2)
 {
 	char	*str;
