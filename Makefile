@@ -6,7 +6,7 @@
 #    By: rrouille <rrouille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:27:55 by rrouille          #+#    #+#              #
-#    Updated: 2023/01/12 15:05:14 by rrouille         ###   ########.fr        #
+#    Updated: 2023/01/12 15:06:11 by rrouille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -101,7 +101,7 @@ git:
 			@git commit -m "Auto-commit"
 			@echo "${BLUE}Commited !${DEFCOLOR}"
 			@git push
-			@echo "${GREEN}All changed are on github!${DEFCOLOR}"
+			@echo "${GREEN}All changed are now on github!${DEFCOLOR}"
 
 re:			fclean all
 			@echo "${GREEN}Cleaned and rebuilt the library correctly !${DEFCOLOR}"
