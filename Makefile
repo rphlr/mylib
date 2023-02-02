@@ -6,7 +6,7 @@
 #    By: rrouille <rrouille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:27:55 by rrouille          #+#    #+#              #
-#    Updated: 2023/02/02 14:02:03 by rrouille         ###   ########.fr        #
+#    Updated: 2023/02/02 14:02:18 by rrouille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -110,7 +110,7 @@ git:
 			@git add *
 			@echo "${CYAN}Added files to git !"
 			@git commit -m "Auto-commit"
-			@echo "${BLUE}Commited !${ENDCOLOR}"
+			@echo "${BLUE}Commited !"
 			@git push
 			@echo "${GREEN}All changed are now on github!${ENDCOLOR}"
 
