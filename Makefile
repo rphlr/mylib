@@ -6,7 +6,7 @@
 #    By: rrouille <rrouille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:27:55 by rrouille          #+#    #+#              #
-#    Updated: 2023/02/02 14:02:57 by rrouille         ###   ########.fr        #
+#    Updated: 2023/02/02 14:03:56 by rrouille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,6 @@ MKDIR		= mkdir
 AR			= ar rcs
 
 # Colors
-ENDCOLOR	= \033[0;39m
 GRAY		= \033[0;90m
 RED			= \033[0;91m
 GREEN		= \033[0;92m
@@ -58,7 +57,7 @@ FTGNLDIR	= gnl
 
 # Progression bar
 START			=		echo "${YELLOW}Start of librairy compilation\n${ENDCOLOR}"
-END_COMP		=		echo "${GREEN}End of librairy compilation\n${ENDCOLOR}"
+END_COMP		=		echo "${GREEN}End of librairy compilation${ENDCOLOR}"
 S_OBJS			=		echo "${RED}Library objects files cleaned!${ENDCOLOR}"
 S_NAME			=		echo "${RED}Library files cleaned!${ENDCOLOR}"
 CHARG_LINE		=		echo "${BG_G} ${ENDCOLOR}\c"
