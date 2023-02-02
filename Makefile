@@ -6,7 +6,7 @@
 #    By: rrouille <rrouille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:27:55 by rrouille          #+#    #+#              #
-#    Updated: 2023/02/02 11:29:00 by rrouille         ###   ########.fr        #
+#    Updated: 2023/02/02 13:36:02 by rrouille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,8 +42,10 @@ BLUE		= \033[0;94m
 MAGENTA		= \033[0;95m
 CYAN		= \033[0;96m
 WHITE		= \033[0;97m
+ENDCOLOR	= \033[0m
+BG_G		= \033[42m
 
-#Sources
+# Sources
 FTISDIR		= is
 FTMEMDIR	= mem
 FTPUTDIR	= put
@@ -54,13 +56,26 @@ FTMATHDIR	= math
 FTPRINTDIR	= print
 FTGNLDIR	= gnl
 
+# Progression bar
+
+START			=		echo "${YELLOW}Start of librairy compilation\n${ENDCOLOR}"
+END_COMP		=		echo "${GREEN}End of librairy compilation\n${ENDCOLOR}"
+S_OBJS			=		echo "${RED}Suppression des objets\n${ENDCOLOR}"
+S_NAME			=		echo "${RED}Suppression du programme\n${ENDCOLOR}"
+CHARG_LINE		=		echo "${BG_G} ${ENDCOLOR}\c"
+BS_N			=		echo "\n"
+
 # First rule
-all:		${NAME}
+all:		start ${NAME}
+
+start:
+			@${START}
 
 ${NAME}:	${OBJS}
+			@${BS_N}
 			@${AR} ${NAME} ${OBJS}
 			@ranlib ${NAME}
-			@echo "${GREEN}Libft compiled!${DEFCOLOR}"
+			@${END_COMP}
 
 ${OBJDIR}%.o : ${SRCDIR}%.c
 			@mkdir -p ${OBJDIR}
@@ -73,7 +88,7 @@ ${OBJDIR}%.o : ${SRCDIR}%.c
 			@mkdir -p ${OBJDIR}${FTMATHDIR}
 			@mkdir -p ${OBJDIR}${FTPRINTDIR}
 			@mkdir -p ${OBJDIR}${FTGNLDIR}
-			@echo "${YELLOW}Compiling: $< ${DEFCOLOR}"
+			@${CHARG_LINE}
 			@${CC} ${CFLAGS} -I ${HDRDIR} -c $< -o $@
 
 # Norminette
