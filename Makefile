@@ -6,7 +6,7 @@
 #    By: rrouille <rrouille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:27:55 by rrouille          #+#    #+#              #
-#    Updated: 2023/02/02 14:02:18 by rrouille         ###   ########.fr        #
+#    Updated: 2023/02/02 14:02:57 by rrouille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,7 @@ FTGNLDIR	= gnl
 # Progression bar
 START			=		echo "${YELLOW}Start of librairy compilation\n${ENDCOLOR}"
 END_COMP		=		echo "${GREEN}End of librairy compilation\n${ENDCOLOR}"
-S_OBJS			=		echo "${RED}Library objects files cleaned!\n${ENDCOLOR}"
+S_OBJS			=		echo "${RED}Library objects files cleaned!${ENDCOLOR}"
 S_NAME			=		echo "${RED}Library files cleaned!${ENDCOLOR}"
 CHARG_LINE		=		echo "${BG_G} ${ENDCOLOR}\c"
 BS_N			=		echo "\n"
