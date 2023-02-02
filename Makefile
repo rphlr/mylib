@@ -6,7 +6,7 @@
 #    By: rrouille <rrouille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:27:55 by rrouille          #+#    #+#              #
-#    Updated: 2023/01/12 15:06:11 by rrouille         ###   ########.fr        #
+#    Updated: 2023/02/02 11:29:00 by rrouille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,9 +73,6 @@ ${OBJDIR}%.o : ${SRCDIR}%.c
 			@mkdir -p ${OBJDIR}${FTMATHDIR}
 			@mkdir -p ${OBJDIR}${FTPRINTDIR}
 			@mkdir -p ${OBJDIR}${FTGNLDIR}
-			@tar -xvf minilibx_opengl.tgz
-			@make -C minilibx_opengl_20191021
-			@${MV} minilibx_opengl_20191021/mlx.h ${HDRDIR}/
 			@echo "${YELLOW}Compiling: $< ${DEFCOLOR}"
 			@${CC} ${CFLAGS} -I ${HDRDIR} -c $< -o $@
 
