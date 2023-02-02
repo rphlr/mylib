@@ -6,7 +6,7 @@
 #    By: rrouille <rrouille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:27:55 by rrouille          #+#    #+#              #
-#    Updated: 2023/02/02 13:36:02 by rrouille         ###   ########.fr        #
+#    Updated: 2023/02/02 13:37:28 by rrouille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,6 @@ FTPRINTDIR	= print
 FTGNLDIR	= gnl
 
 # Progression bar
-
 START			=		echo "${YELLOW}Start of librairy compilation\n${ENDCOLOR}"
 END_COMP		=		echo "${GREEN}End of librairy compilation\n${ENDCOLOR}"
 S_OBJS			=		echo "${RED}Suppression des objets\n${ENDCOLOR}"
