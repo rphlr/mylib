@@ -6,7 +6,7 @@
 #    By: rrouille <rrouille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:27:55 by rrouille          #+#    #+#              #
-#    Updated: 2023/02/02 14:01:32 by rrouille         ###   ########.fr        #
+#    Updated: 2023/02/02 14:02:03 by rrouille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -108,7 +108,7 @@ fclean:		clean
 # Git repo maker
 git:
 			@git add *
-			@echo "${CYAN}Added files to git !${ENDCOLOR}"
+			@echo "${CYAN}Added files to git !"
 			@git commit -m "Auto-commit"
 			@echo "${BLUE}Commited !${ENDCOLOR}"
 			@git push
