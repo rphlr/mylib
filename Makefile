@@ -6,7 +6,7 @@
 #    By: rrouille <rrouille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:27:55 by rrouille          #+#    #+#              #
-#    Updated: 2023/02/02 13:37:28 by rrouille         ###   ########.fr        #
+#    Updated: 2023/02/02 14:01:32 by rrouille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ MKDIR		= mkdir
 AR			= ar rcs
 
 # Colors
-DEFCOLOR	= \033[0;39m
+ENDCOLOR	= \033[0;39m
 GRAY		= \033[0;90m
 RED			= \033[0;91m
 GREEN		= \033[0;92m
@@ -59,8 +59,8 @@ FTGNLDIR	= gnl
 # Progression bar
 START			=		echo "${YELLOW}Start of librairy compilation\n${ENDCOLOR}"
 END_COMP		=		echo "${GREEN}End of librairy compilation\n${ENDCOLOR}"
-S_OBJS			=		echo "${RED}Suppression des objets\n${ENDCOLOR}"
-S_NAME			=		echo "${RED}Suppression du programme\n${ENDCOLOR}"
+S_OBJS			=		echo "${RED}Library objects files cleaned!\n${ENDCOLOR}"
+S_NAME			=		echo "${RED}Library files cleaned!${ENDCOLOR}"
 CHARG_LINE		=		echo "${BG_G} ${ENDCOLOR}\c"
 BS_N			=		echo "\n"
 
@@ -96,25 +96,25 @@ norm:
 
 # Cleaning
 clean:
+			@$(S_OBJS)
 			@${RM} ${OBJDIR}
 			@${RM} minilibx_opengl_20191021
-			@echo "${BLUE}Library objects files cleaned!${DEFCOLOR}"
 
 fclean:		clean
+			@$(S_NAME)
 			@${RM} ${NAME}
 			@${RM} ${HDRDIR}/mlx.h
-			@echo "${CYAN}Library executable files cleaned!${DEFCOLOR}"\
 
 # Git repo maker
 git:
 			@git add *
-			@echo "${CYAN}Added files to git !${DEFCOLOR}"
+			@echo "${CYAN}Added files to git !${ENDCOLOR}"
 			@git commit -m "Auto-commit"
-			@echo "${BLUE}Commited !${DEFCOLOR}"
+			@echo "${BLUE}Commited !${ENDCOLOR}"
 			@git push
-			@echo "${GREEN}All changed are now on github!${DEFCOLOR}"
+			@echo "${GREEN}All changed are now on github!${ENDCOLOR}"
 
 re:			fclean all
-			@echo "${GREEN}Cleaned and rebuilt the library correctly !${DEFCOLOR}"
+			@echo "${GREEN}Cleaned and rebuilt the library correctly !${ENDCOLOR}"
 
 .PHONY:		all clean fclean re norm
