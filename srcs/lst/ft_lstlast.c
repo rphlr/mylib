@@ -13,14 +13,10 @@
 #include "mylib.h"
 
 /**
- * @brief	The ft_lstlast function takes in a t_list pointer as a
- * 			parameter. This t_list pointer points to the linked list of which
- * 			we want to find the last element. The function returns a t_list
- * 			pointer that points to the last element in the linked list. If the
- * 			linked list is empty, the function returns NULL.
- * @return	It returns a pointer to the last element of the linked list.
- * @param	t_list_ptr		This t_list pointer points to the linked list of
- * 							which we want to find the last element.
+ * @brief	Finds the last element in a linked list.
+ * @return	A pointer to the last element in the linked list, or NULL if the
+ * 			list is empty.
+ * @param	t_list	*lst : A pointer to the first element in the linked list
  */
 t_list	*ft_lstlast(t_list *lst)
 {
