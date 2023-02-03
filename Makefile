@@ -6,7 +6,7 @@
 #    By: rrouille <rrouille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:27:55 by rrouille          #+#    #+#              #
-#    Updated: 2023/02/03 15:23:23 by rrouille         ###   ########.fr        #
+#    Updated: 2023/02/03 15:25:02 by rrouille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -104,6 +104,7 @@ ${OBJDIR}%.o : ${SRCDIR}%.c
 			@mkdir -p ${OBJDIR}${FTMATHDIR}
 			@mkdir -p ${OBJDIR}${FTPRINTDIR}
 			@mkdir -p ${OBJDIR}${FTGNLDIR}
+			@${CHARG_LINE}
 			@${CC} ${CFLAGS} -I ${HDRDIR} -c $< -o $@
 
 # Norminette
