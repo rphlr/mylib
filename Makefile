@@ -6,7 +6,7 @@
 #    By: rrouille <rrouille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:27:55 by rrouille          #+#    #+#              #
-#    Updated: 2023/02/02 14:03:56 by rrouille         ###   ########.fr        #
+#    Updated: 2023/02/03 15:23:23 by rrouille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,8 +63,26 @@ S_NAME			=		echo "${RED}Library files cleaned!${ENDCOLOR}"
 CHARG_LINE		=		echo "${BG_G} ${ENDCOLOR}\c"
 BS_N			=		echo "\n"
 
+# Progress bar
+PROGRESS_BAR_LENGTH = 50
+
+progress-bar:
+	@echo "Start of program compilation\n"
+	@for i in `seq 1 $(PROGRESS_BAR_LENGTH)`; do \
+		printf "\r${BG_G} ${ENDCOLOR}"; \
+		for j in `seq 1 $$i`; do \
+			printf "${BG_G} ${ENDCOLOR}"; \
+		done; \
+		for j in `seq $$i $(PROGRESS_BAR_LENGTH)`; do \
+			printf " "; \
+		done; \
+		printf " %.0f%%" $$((100 * $$i / $(PROGRESS_BAR_LENGTH))); \
+		sleep 0.1; \
+	done; \
+	printf "\n\nEnd of compilation\n\n";
+
 # First rule
-all:		start ${NAME}
+all:		start progress-bar ${NAME}
 
 start:
 			@${START}
@@ -86,7 +104,6 @@ ${OBJDIR}%.o : ${SRCDIR}%.c
 			@mkdir -p ${OBJDIR}${FTMATHDIR}
 			@mkdir -p ${OBJDIR}${FTPRINTDIR}
 			@mkdir -p ${OBJDIR}${FTGNLDIR}
-			@${CHARG_LINE}
 			@${CC} ${CFLAGS} -I ${HDRDIR} -c $< -o $@
 
 # Norminette
