@@ -6,13 +6,13 @@
 /*   By: rrouille <rrouille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 12:52:29 by rrouille          #+#    #+#             */
-/*   Updated: 2023/02/06 12:53:48 by rrouille         ###   ########.fr       */
+/*   Updated: 2023/02/06 12:55:12 by rrouille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mylib.h"
 
-int	ft_strncmp(const char *s1, const char *s2)
+int	ft_strcmp(const char *s1, const char *s2)
 {
 	size_t	i;
 
