@@ -6,7 +6,7 @@
 /*   By: rrouille <rrouille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 14:07:12 by rrouille          #+#    #+#             */
-/*   Updated: 2023/02/06 13:02:44 by rrouille         ###   ########.fr       */
+/*   Updated: 2023/02/06 13:04:25 by rrouille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  * 						to be copied.
  * @param	char_ptr	Pointer to the null-terminated string to be copied.
  */
-char	*ft_strcpy(char *dest, char *src)
+char	*ft_strcpy(char *dest, const char *src)
 {
 	int	i;
 
@@ -40,7 +40,7 @@ char	*ft_strcpy(char *dest, char *src)
  * 						to be copied.
  * @param	char_ptr	Pointer to the null-terminated string to be copied.
  */
-void ft_strcpy_void(char *dest, const char *src)
+void ft_strcpy_void(char *dest, char *src)
 {
 	int	i;
 
