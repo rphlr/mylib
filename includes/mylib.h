@@ -37,6 +37,8 @@ int		ft_isdigit(int c);
 int		ft_isalnum(int c);
 int		ft_isascii(int c);
 int		ft_isprint(int c);
+int		ft_isxdigit(int c);
+int		ft_isspace(int c);
 
 // mem
 void	*ft_memchr(const void *s, int c, size_t n);
@@ -64,6 +66,7 @@ char	*ft_strtrim(const char *s1, const char *set);
 char	**ft_split(const char *s, char c);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
+long	ft_strtol(const char *nptr, char **endptr, int base);
 
 // to
 int		ft_toupper(int c);
