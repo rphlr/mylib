@@ -41,7 +41,7 @@ long ft_strtol(const char *nptr, char **endptr, int base)
         int digit;
         if (ft_isdigit(*ptr))
             digit = *ptr - '0';
-        else if (base == 16 && isxdigit(*ptr))
+        else if (base == 16 && ft_isxdigit(*ptr))
             digit = 10 + (ft_tolower(*ptr) - 'a');
         else
             break;
