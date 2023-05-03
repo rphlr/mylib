@@ -6,7 +6,7 @@
 #    By: rrouille <rrouille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:27:55 by rrouille          #+#    #+#              #
-#    Updated: 2023/05/03 13:28:52 by rrouille         ###   ########.fr        #
+#    Updated: 2023/05/03 13:50:49 by rrouille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -110,7 +110,7 @@ fclean:		clean
 			@${RM} ${HDRDIR}/mlx.h
 
 # Git repo maker
-git:
+git: fclean
 			@git add *
 			@echo "${CYAN}Added files to git !"
 			@git commit -m "Auto-commit"

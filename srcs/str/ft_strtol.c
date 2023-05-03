@@ -57,17 +57,6 @@
 //     return negative ? -result : result;
 // }
 
-long	check_base(const char **ptr, int base, bool *negative)
-{
-	while (ft_isspace(**ptr))
-		(*ptr)++;
-	*negative = (**ptr == '-');
-	if (**ptr == '-' || **ptr == '+')
-		(*ptr)++;
-	base = base_adjustment(ptr, base);
-	return (base);
-}
-
 int	base_adjustment(const char **ptr, int base)
 {
 	if (base == 0)
@@ -78,6 +67,39 @@ int	base_adjustment(const char **ptr, int base)
 			base = 10;
 	}
 	return (base);
+}
+
+long	check_base(const char **ptr, int base, bool *negative)
+{
+	while (ft_isspace((int)**ptr))
+		(*ptr)++;
+	*negative = (**ptr == '-');
+	if (**ptr == '-' || **ptr == '+')
+		(*ptr)++;
+	base = base_adjustment(ptr, base);
+	return (base);
+}
+
+long	calculate_result(const char **ptr, int base, bool negative, long result)
+{
+	int		digit;
+
+	while (1)
+	{
+		if (ft_isdigit((int)**ptr))
+			digit = **ptr - '0';
+		else if (base == 16 && ft_isxdigit((int)**ptr))
+			digit = 10 + (ft_tolower((int)**ptr) - 'a');
+		else
+			break ;
+		if (digit >= base)
+			break ;
+		result = result * base + digit;
+		ptr++;
+	}
+	if (negative)
+		result = -result;
+	return (result);
 }
 
 long	ft_strtol(const char *nptr, char **endptr, int base)
@@ -94,27 +116,5 @@ long	ft_strtol(const char *nptr, char **endptr, int base)
 	result = calculate_result(&ptr, base, negative, result);
 	if (endptr != NULL)
 		*endptr = (char *)ptr;
-	return (result);
-}
-
-long	calculate_result(const char **ptr, int base, bool negative, long result)
-{
-	int		digit;
-
-	while (1)
-	{
-		if (ft_isdigit(*ptr))
-			digit = *ptr - '0';
-		else if (base == 16 && ft_isxdigit(*ptr))
-			digit = 10 + (ft_tolower(*ptr) - 'a');
-		else
-			break ;
-		if (digit >= base)
-			break ;
-		result = result * base + digit;
-		ptr++;
-	}
-	if (negative)
-		result = -result;
 	return (result);
 }
