@@ -6,7 +6,7 @@
 #    By: rrouille <rrouille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:27:55 by rrouille          #+#    #+#              #
-#    Updated: 2023/02/03 16:14:50 by rrouille         ###   ########.fr        #
+#    Updated: 2023/05/03 13:28:17 by rrouille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,14 +54,15 @@ FTLSTDIR	= lst
 FTMATHDIR	= math
 FTPRINTDIR	= print
 FTGNLDIR	= gnl
+FTGCDIR		= gc
 
 # Progression bar
-START			=		echo "${YELLOW}Start of librairy compilation\n${ENDCOLOR}"
-END_COMP		=		echo "${GREEN}End of librairy compilation${ENDCOLOR}"
-S_OBJS			=		echo "${RED}Library objects files cleaned!${ENDCOLOR}"
-S_NAME			=		echo "${RED}Library files cleaned!${ENDCOLOR}"
-CHARG_LINE		=		echo "${BG_G} ${ENDCOLOR}\c"
-BS_N			=		echo "\n"
+START		=		echo "${YELLOW}Start of librairy compilation\n${ENDCOLOR}"
+END_COMP	=		echo "${GREEN}End of librairy compilation${ENDCOLOR}"
+S_OBJS		=		echo "${RED}Library objects files cleaned!${ENDCOLOR}"
+S_NAME		=		echo "${RED}Library files cleaned!${ENDCOLOR}"
+CHARG_LINE	=		echo "${BG_G} ${ENDCOLOR}\c"
+BS_N		=		echo "\n"
 
 # Progress bar
 PROGRESS_BAR_LENGTH = 50
