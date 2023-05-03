@@ -19,7 +19,7 @@
 # include <stdlib.h>
 # include <stdarg.h>
 # include <stdint.h>
-# include "mylib.h"
+# include "ft_gc.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 5
