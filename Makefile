@@ -6,7 +6,7 @@
 #    By: rrouille <rrouille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:27:55 by rrouille          #+#    #+#              #
-#    Updated: 2023/05/03 13:28:17 by rrouille         ###   ########.fr        #
+#    Updated: 2023/05/03 13:28:52 by rrouille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,6 +90,7 @@ ${OBJDIR}%.o : ${SRCDIR}%.c
 			@mkdir -p ${OBJDIR}${FTMATHDIR}
 			@mkdir -p ${OBJDIR}${FTPRINTDIR}
 			@mkdir -p ${OBJDIR}${FTGNLDIR}
+			@mkdir -p ${OBJDIR}${FTGCDIR}
 			@${CHARG_LINE}
 			@${CC} ${CFLAGS} -I ${HDRDIR} -c $< -o $@
 
