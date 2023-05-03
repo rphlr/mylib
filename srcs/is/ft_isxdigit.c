@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_isxdigit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rrouille <rrouille@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 17:27:29 by rrouille          #+#    #+#             */
-/*   Updated: 2022/10/24 17:27:31 by rrouille         ###   ########.fr       */
+/*   Created: 2023/04/09 20:38:20 by marvin            #+#    #+#             */
+/*   Updated: 2023/04/09 20:38:20 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mylib.h"
 
-void	*ft_calloc(size_t count, size_t size)
+int	ft_isxdigit(int c)
 {
-	void	*ptr;
-
-	ptr = malloc(count * size);
-	if (ptr == NULL)
-		return (NULL);
-	ft_bzero(ptr, count * size);
-	return (ptr);
+    return ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'F')
+		|| (c >= 'a' && c <= 'f'));
 }
