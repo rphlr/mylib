@@ -6,7 +6,7 @@
 /*   By: rrouille <rrouille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 14:44:53 by rrouille          #+#    #+#             */
-/*   Updated: 2022/11/19 16:48:12 by rrouille         ###   ########.fr       */
+/*   Updated: 2023/05/03 14:05:21 by rrouille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	print_unsigned(unsigned int num)
 	{
 		numchar = ft_unsigned_itoa(num);
 		len += print_str(numchar);
-		free(numchar);
+		ft_gc_free(numchar);
 	}
 	return (len);
 }

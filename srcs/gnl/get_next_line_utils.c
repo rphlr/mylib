@@ -6,7 +6,7 @@
 /*   By: rrouille <rrouille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:52:32 by rrouille          #+#    #+#             */
-/*   Updated: 2023/02/03 14:38:30 by rrouille         ###   ########.fr       */
+/*   Updated: 2023/05/03 14:08:45 by rrouille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*trim_last_list_element_helper(t_list *last, int i)
 	len = 0;
 	while (((char *)last->content)[len])
 		len++;
-	trimmed_content = malloc(sizeof(char) * (len - i + 1));
+	trimmed_content = ft_gc_malloc(sizeof(char) * (len - i + 1));
 	if (trimmed_content == NULL)
 		return (NULL);
 	j = 0;
@@ -94,7 +94,7 @@ void	generate_line(char **line, t_list *stash)
 		}
 		stash = stash->next;
 	}
-	*line = malloc(sizeof(char) * (len + 1));
+	*line = ft_gc_malloc(sizeof(char) * (len + 1));
 }
 
 /**

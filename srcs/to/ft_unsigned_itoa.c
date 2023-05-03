@@ -6,7 +6,7 @@
 /*   By: rrouille <rrouille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 12:45:11 by rrouille          #+#    #+#             */
-/*   Updated: 2022/11/28 15:04:29 by rrouille         ###   ########.fr       */
+/*   Updated: 2023/05/03 14:03:57 by rrouille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*ft_unsigned_itoa(unsigned int num)
 	int		len;
 
 	len = num_len(num);
-	numchar = (char *)malloc(sizeof(char) * (len + 1));
+	numchar = (char *)ft_gc_malloc(sizeof(char) * (len + 1));
 	if (!numchar)
 		return (NULL);
 	numchar[len] = '\0';

@@ -44,7 +44,7 @@ static char	*ft_print_word(char const *s, char c)
 	len_strs = 0;
 	while (s[len_strs] && !ft_check_sep(s[len_strs], c))
 		len_strs++;
-	strs = malloc(sizeof(char) * (len_strs + 1));
+	strs = ft_gc_malloc(sizeof(char) * (len_strs + 1));
 	if (!(strs))
 		return (NULL);
 	while (i < len_strs)
@@ -99,9 +99,7 @@ char	**ft_fill_array(char **strs, const char *s, char c, int i)
 			strs[i] = ft_print_word(s, c);
 			if (!strs[i])
 			{
-				while (i--)
-					free(strs[i]);
-				free(strs);
+				ft_gc_free(strs);
 				return (NULL);
 			}
 			i++;
@@ -128,7 +126,7 @@ char	**ft_split(const char *s, char c)
 	int		i;
 
 	i = 0;
-	strs = malloc(sizeof(char *) * (ft_count_strings(s, c) + 1));
+	strs = ft_gc_malloc(sizeof(char *) * (ft_count_strings(s, c) + 1));
 	if (!strs)
 		return (NULL);
 	return (ft_fill_array(strs, s, c, i));

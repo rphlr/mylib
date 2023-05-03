@@ -22,11 +22,11 @@ t_list	*ft_lstnew_for_strict_francinette(void *content)
 {
 	t_list	*new;
 
-	new = (t_list *)malloc(sizeof(t_list));
+	new = (t_list *)ft_gc_malloc(sizeof(t_list));
 	if (!new)
 	{
-		free(content);
-		free(new);
+		ft_gc_free(content);
+		ft_gc_free(new);
 		return (NULL);
 	}
 	new->content = content;

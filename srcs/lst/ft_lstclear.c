@@ -29,7 +29,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 		tmp = *lst;
 		*lst = (*lst)->next;
 		del(tmp->content);
-		free(tmp);
+		ft_gc_free(tmp);
 	}
 	*lst = NULL;
 }

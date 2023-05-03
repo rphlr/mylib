@@ -64,8 +64,8 @@ void	append_buffer_to_stash(t_list **stash, char *buffer, int num_bytes)
 	t_list	*last;
 	t_list	*new_node;
 
-	new_node = malloc(sizeof(t_list));
-	new_node->content = malloc(sizeof(char) * (num_bytes + 1));
+	new_node = ft_gc_malloc(sizeof(t_list));
+	new_node->content = ft_gc_malloc(sizeof(char) * (num_bytes + 1));
 	if (new_node == NULL
 		|| new_node->content == NULL)
 		return ;
@@ -136,7 +136,7 @@ t_list	*trim_last_list_element(t_list **lst)
 	t_list	*clean_node;
 	int		i;
 
-	clean_node = malloc(sizeof(t_list));
+	clean_node = ft_gc_malloc(sizeof(t_list));
 	if (lst == NULL || clean_node == NULL)
 	{
 		*lst = clean_node;
@@ -152,7 +152,7 @@ t_list	*trim_last_list_element(t_list **lst)
 	clean_node->content = trim_last_list_element_helper(last, i);
 	if (clean_node->content == NULL)
 		return (NULL);
-	free_stash(*lst);
+	// free_stash(*lst);
 	*lst = clean_node;
 	return (clean_node);
 }
@@ -177,9 +177,9 @@ char	*get_next_line(int fd)
 	trim_last_list_element(&stash[fd]);
 	if (line[0] == '\0')
 	{
-		free_stash(stash[fd]);
+		// free_stash(stash[fd]);
 		stash[fd] = NULL;
-		free(line);
+		ft_gc_free(line);
 		return (NULL);
 	}
 	return (line);

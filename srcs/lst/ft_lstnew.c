@@ -22,10 +22,10 @@ t_list	*ft_lstnew(void *content)
 {
 	t_list	*new;
 
-	new = (t_list *)malloc(sizeof(t_list));
+	new = (t_list *)ft_gc_malloc(sizeof(t_list));
 	if (!new)
 	{
-		free(new);
+		ft_gc_free(new);
 		return (NULL);
 	}
 	new->content = content;
