@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_gc_internal.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qdam <qdam@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rrouille <rrouille@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 13:57:18 by rrouille              #+#    #+#             */
 /*   Updated: 2023/05/21 02:38:29 by rrouille             ###   ########.fr       */
