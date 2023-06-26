@@ -6,7 +6,7 @@
 #    By: rrouille <rrouille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:27:55 by rrouille          #+#    #+#              #
-#    Updated: 2023/06/26 17:48:56 by rrouille         ###   ########.fr        #
+#    Updated: 2023/06/26 17:49:15 by rrouille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,17 +97,6 @@ ${OBJDIR}%.o : ${SRCDIR}%.c
 # Norminette
 norm:
 			@norminette -R CheckForbiddenSourceHeader
-
-# Cleaning
-clean:
-			@$(S_OBJS)
-			@${RM} ${OBJDIR}
-			@${RM} minilibx_opengl_20191021
-
-fclean:		clean
-			@$(S_NAME)
-			@${RM} ${NAME}
-			@${RM} ${HDRDIR}/mlx.h
 
 # Git repo maker
 git: fclean
