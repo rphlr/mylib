@@ -6,7 +6,7 @@
 #    By: rrouille <rrouille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:27:55 by rrouille          #+#    #+#              #
-#    Updated: 2023/06/26 17:49:15 by rrouille         ###   ########.fr        #
+#    Updated: 2023/06/26 17:50:17 by rrouille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,17 +32,42 @@ MKDIR		= mkdir
 # Archive
 AR			= ar rcs
 
-# Colors
-GRAY		= \033[0;90m
-RED			= \033[0;91m
-GREEN		= \033[0;92m
-YELLOW		= \033[0;93m
-BLUE		= \033[0;94m
-MAGENTA		= \033[0;95m
-CYAN		= \033[0;96m
-WHITE		= \033[0;97m
-ENDCOLOR	= \033[0m
-BG_G		= \033[42m
+# Directories
+SRCSDIR			= srcs/
+OBJSDIR			= objs/
+HDRDIR			= includes/
+
+# Colors for the terminal
+GRAY			= \033[0;90m
+RED				= \033[0;91m
+GREEN			= \033[0;92m
+YELLOW			= \033[0;93m
+BLUE			= \033[0;94m
+MAGENTA			= \033[0;95m
+CYAN			= \033[0;96m
+WHITE			= \033[0;97m
+ENDCOLOR		= \033[0m
+
+# Background colors
+BG_G			= \033[42m
+BG_R			= \033[41m
+BG_Y			= \033[43m
+BG_B			= \033[44m
+BG_M			= \033[45m
+BG_C			= \033[46m
+BG_W			= \033[47m
+
+# Text formatting
+BOLD			= \033[1m
+UNDERLINE		= \033[4m
+ITALIC			= \033[3m
+INVERTED		= \033[7m
+
+# Clear screen
+CLEAR			= \033c
+
+# Clear line
+CLEARLN			= \r\033[K
 
 # Sources
 FTISDIR		= is
@@ -68,7 +93,7 @@ BS_N		=		echo "\n"
 PROGRESS_BAR_LENGTH = 50
 
 # First rule
-all:		start ${NAME}
+all:		clear start ${NAME}
 
 start:
 			@${START}
