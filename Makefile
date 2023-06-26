@@ -6,7 +6,7 @@
 #    By: rrouille <rrouille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:27:55 by rrouille          #+#    #+#              #
-#    Updated: 2023/05/03 13:50:49 by rrouille         ###   ########.fr        #
+#    Updated: 2023/06/26 17:48:56 by rrouille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -118,7 +118,30 @@ git: fclean
 			@git push
 			@echo "${GREEN}All changed are now on github!${ENDCOLOR}"
 
-re:			fclean all
-			@echo "${GREEN}Cleaned and rebuilt the library correctly !${ENDCOLOR}"
+###############################################################################
+#                   ↓↓↓↓↓           CLEANING           ↓↓↓↓↓                  #
+###############################################################################
 
-.PHONY:		all clean fclean re norm
+# Clean object files and executable
+clean:
+			@echo "${CLEAR}\c"
+			@${S_OBJS}
+			@${RM} objs/
+			@sleep 0.3
+			@echo "${CLEAR}\c"
+			@echo "${GREEN}✅ Simple clean completed! ✨\n"
+
+# Clean everything
+fclean: clean
+			@${S_NAME}
+			@${RM} ${NAME}
+			@sleep 0.3
+			@echo "${CLEAR}\c"
+			@echo "${GREEN}✅ Deep clean completed! ✨"
+
+# Clear the screen
+clear:
+			@echo "${CLEAR}\c"
+
+# Rebuild the program
+re: fclean all
