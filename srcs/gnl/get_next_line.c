@@ -152,7 +152,6 @@ t_list	*trim_last_list_element(t_list **lst)
 	clean_node->content = trim_last_list_element_helper(last, i);
 	if (clean_node->content == NULL)
 		return (NULL);
-	// free_stash(*lst);
 	*lst = clean_node;
 	return (clean_node);
 }
@@ -177,7 +176,6 @@ char	*get_next_line(int fd)
 	trim_last_list_element(&stash[fd]);
 	if (line[0] == '\0')
 	{
-		// free_stash(stash[fd]);
 		stash[fd] = NULL;
 		ft_gc_free(line);
 		return (NULL);
