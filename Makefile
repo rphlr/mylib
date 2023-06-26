@@ -6,7 +6,7 @@
 #    By: rrouille <rrouille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:27:55 by rrouille          #+#    #+#              #
-#    Updated: 2023/06/26 17:50:17 by rrouille         ###   ########.fr        #
+#    Updated: 2023/06/26 17:57:16 by rrouille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ BLUE			= \033[0;94m
 MAGENTA			= \033[0;95m
 CYAN			= \033[0;96m
 WHITE			= \033[0;97m
+GRAY			= \033[0;90m
 ENDCOLOR		= \033[0m
 
 # Background colors
@@ -119,9 +120,26 @@ ${OBJDIR}%.o : ${SRCDIR}%.c
 			@${CHARG_LINE}
 			@${CC} ${CFLAGS} -I ${HDRDIR} -c $< -o $@
 
+###############################################################################
+#                  ↓↓↓↓↓           UTILITIES           ↓↓↓↓↓                  #
+###############################################################################
+
+# Drawings
+draw_norm_yes:
+			@echo "${CLEAR}${GREEN}${BOLD}\c"
+			@cat ascii_art/obama
+			@echo "${ENDCOLOR}"
+
+draw_norm_no:
+			@echo "${CLEAR}${RED}${BOLD}\c"
+			@cat ascii_art/obama_sad
+			@echo "${ENDCOLOR}"
+
 # Norminette
 norm:
-			@norminette -R CheckForbiddenSourceHeader
+			@norminette ${SRCSDIR} >/dev/null 2>&1 && norminette ${HDRDIR} >/dev/null 2>&1 && $(MAKE) draw_norm_yes || $(MAKE) draw_norm_no && norminette ${SRCSDIR} && norminette ${HDRDIR}
+
+n:		norm
 
 # Git repo maker
 git: fclean
