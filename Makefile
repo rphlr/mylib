@@ -6,7 +6,7 @@
 #    By: rrouille <rrouille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:27:55 by rrouille          #+#    #+#              #
-#    Updated: 2023/07/04 16:59:38 by rrouille         ###   ########.fr        #
+#    Updated: 2023/07/04 17:34:21 by rrouille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -142,9 +142,14 @@ norm:
 n:		norm
 
 # fast
-fast: ${OBJS}
+fast: fast_mode ${OBJS}
 			@${AR} ${NAME} ${OBJS}
 			@ranlib ${NAME}
+			@echo "${CLEAR}${GREEN}✅ Fast compilation completed! ✨${ENDCOLOR}"
+
+fast_mode:
+			@echo "${CLEAR}\c"
+			@echo "${YELLOW}✅ Fast mode enabled !${ENDCOLOR}"
 
 # Git repo maker
 git: fclean
