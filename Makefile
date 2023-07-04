@@ -6,7 +6,7 @@
 #    By: rrouille <rrouille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:27:55 by rrouille          #+#    #+#              #
-#    Updated: 2023/06/26 17:57:16 by rrouille         ###   ########.fr        #
+#    Updated: 2023/07/04 16:59:38 by rrouille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -140,6 +140,11 @@ norm:
 			@norminette ${SRCSDIR} >/dev/null 2>&1 && norminette ${HDRDIR} >/dev/null 2>&1 && $(MAKE) draw_norm_yes || $(MAKE) draw_norm_no && norminette ${SRCSDIR} && norminette ${HDRDIR}
 
 n:		norm
+
+# fast
+fast: ${OBJS}
+			@${AR} ${NAME} ${OBJS}
+			@ranlib ${NAME}
 
 # Git repo maker
 git: fclean
