@@ -31,8 +31,6 @@ typedef struct s_context
 	struct s_context	*next;
 }	t_ctx;
 
-/********************  USER FUNCTIONS  ********************/
-
 t_ptr	ft_gc_malloc(size_t sz);
 void	ft_gc_free(t_ptr p);
 int		ft_gc_manage(t_ptr p, void (*free_func)(t_ptr ));
@@ -49,18 +47,6 @@ void	ft_gc_ctx_release_all(t_ctx *ctx);
 void	ft_gc_ctx_obtain_wild(t_ctx *ctx);
 void	ft_gc_ctx_transfer(t_ctx *ctx_des, t_ctx *ctx_src, t_ptr p);
 void	ft_gc_ctx_transfer_all(t_ctx *ctx_des, t_ctx *ctx_src);
-
-/********************  INTERNAL FUNCTIONS  ********************/
-/*
- *	Note to developer: to avoid nasty bugs and to make program crashes when we
- *	do something stupid, ctx == NULL does NOT mean ctx is global, unlike user
- *	functions' implementation where ctx == NULL almost always means ctx is being
- *	referred to as the global context. I.e, the GC should crash when we forget
- *	to check for NULL pointer in user functions' implementation.
- *	In general, internal functions should not test for error, only direct
- *	implementations are expected. Error checking should be done before, i.e. in
- *	user functions. Once we enter our internal realm, things should already work
- */
 
 // Init to zero all fields in context
 void	_init_ctx(t_ctx *ctx);

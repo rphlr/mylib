@@ -15,8 +15,6 @@
 
 # include <stddef.h>
 
-/********************  GLOBAL CONTEXT  ********************/
-
 // Work just like `malloc`. Return a raw pointer of sz bytes, or NULL if sz is
 // zero or the allocation fails. Returned pointer is managed under the global
 // context.
@@ -41,8 +39,6 @@ void	ft_gc_free_all(void);
 // under these contexts. The global context is left untouched. Equivalent to
 // calling ft_gc_ctx_destroy(ctx) for each created context.
 void	ft_gc_destroy_all_contexts(void);
-
-/********************  LOCAL CONTEXT  ********************/
 
 // Create a new allocation context. Pass 1 as argument to make the new
 // context try to obtain wild pointers (if any), otherwise 0. Return the created
