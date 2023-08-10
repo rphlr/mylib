@@ -68,6 +68,7 @@ char	**ft_split(const char *s, char c);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 long	ft_strtol(const char *nptr, char **endptr, int base);
+char	*ft_strncpy(char *dest, const char *src, size_t n);
 
 // to
 int		ft_toupper(int c);
