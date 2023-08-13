@@ -71,6 +71,7 @@ long	ft_strtol(const char *nptr, char **endptr, int base);
 char	*ft_strncpy(char *dest, const char *src, size_t n);
 int		ft_tablen(char **tab);
 char	*ft_strndup(const char *s, size_t n);
+char	*ft_strtok(char *str, const char *delimiters);
 
 // to
 int		ft_toupper(int c);
