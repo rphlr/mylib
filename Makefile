@@ -6,7 +6,7 @@
 #    By: rrouille <rrouille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:27:55 by rrouille          #+#    #+#              #
-#    Updated: 2023/07/04 17:34:21 by rrouille         ###   ########.fr        #
+#    Updated: 2023/08/14 15:22:41 by rrouille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,10 +24,22 @@ NAME		= mylib.a
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror
 
+# Operating System
+OS				:= ${shell uname}
+
 # Usefuls commands
 RM			= rm -rf
 MV			= mv
 MKDIR		= mkdir
+
+# If using Linux ${ECHO} command must be `${ECHO} -e`
+ifeq ($(OS),Linux)
+	ECHO = echo -e
+else ifeq ($(OS),Darwin) # Darwin est le nom de retour de `uname` pour macOS
+	ECHO = echo
+else
+	$(error OS not supported)
+endif
 
 # Archive
 AR			= ar rcs
@@ -83,12 +95,12 @@ FTGNLDIR	= gnl
 FTGCDIR		= gc
 
 # Progression bar
-START		=		echo "${YELLOW}Start of librairy compilation\n${ENDCOLOR}"
-END_COMP	=		echo "${GREEN}End of librairy compilation${ENDCOLOR}"
-S_OBJS		=		echo "${RED}Library objects files cleaned!${ENDCOLOR}"
-S_NAME		=		echo "${RED}Library files cleaned!${ENDCOLOR}"
-CHARG_LINE	=		echo "${BG_G} ${ENDCOLOR}\c"
-BS_N		=		echo "\n"
+START		=		${ECHO} "${YELLOW}Start of librairy compilation\n${ENDCOLOR}"
+END_COMP	=		${ECHO} "${GREEN}End of librairy compilation${ENDCOLOR}"
+S_OBJS		=		${ECHO} "${RED}Library objects files cleaned!${ENDCOLOR}"
+S_NAME		=		${ECHO} "${RED}Library files cleaned!${ENDCOLOR}"
+CHARG_LINE	=		${ECHO} "${BG_G} ${ENDCOLOR}\c"
+BS_N		=		${ECHO} "\n"
 
 # Progress bar
 PROGRESS_BAR_LENGTH = 50
@@ -126,14 +138,14 @@ ${OBJDIR}%.o : ${SRCDIR}%.c
 
 # Drawings
 draw_norm_yes:
-			@echo "${CLEAR}${GREEN}${BOLD}\c"
+			@${ECHO} "${CLEAR}${GREEN}${BOLD}\c"
 			@cat ascii_art/obama
-			@echo "${ENDCOLOR}"
+			@${ECHO} "${ENDCOLOR}"
 
 draw_norm_no:
-			@echo "${CLEAR}${RED}${BOLD}\c"
+			@${ECHO} "${CLEAR}${RED}${BOLD}\c"
 			@cat ascii_art/obama_sad
-			@echo "${ENDCOLOR}"
+			@${ECHO} "${ENDCOLOR}"
 
 # Norminette
 norm:
@@ -145,20 +157,20 @@ n:		norm
 fast: fast_mode ${OBJS}
 			@${AR} ${NAME} ${OBJS}
 			@ranlib ${NAME}
-			@echo "${CLEAR}${GREEN}✅ Fast compilation completed! ✨${ENDCOLOR}"
+			@${ECHO} "${CLEAR}${GREEN}✅ Fast compilation completed! ✨${ENDCOLOR}"
 
 fast_mode:
-			@echo "${CLEAR}\c"
-			@echo "${YELLOW}✅ Fast mode enabled !${ENDCOLOR}"
+			@${ECHO} "${CLEAR}\c"
+			@${ECHO} "${YELLOW}✅ Fast mode enabled !${ENDCOLOR}"
 
 # Git repo maker
 git: fclean
 			@git add *
-			@echo "${CYAN}Added files to git !"
+			@${ECHO} "${CYAN}Added files to git !"
 			@git commit -m "Auto-commit"
-			@echo "${BLUE}Commited !"
+			@${ECHO} "${BLUE}Commited !"
 			@git push
-			@echo "${GREEN}All changed are now on github!${ENDCOLOR}"
+			@${ECHO} "${GREEN}All changed are now on github!${ENDCOLOR}"
 
 ###############################################################################
 #                   ↓↓↓↓↓           CLEANING           ↓↓↓↓↓                  #
@@ -166,24 +178,24 @@ git: fclean
 
 # Clean object files and executable
 clean:
-			@echo "${CLEAR}\c"
+			@${ECHO} "${CLEAR}\c"
 			@${S_OBJS}
 			@${RM} objs/
 			@sleep 0.3
-			@echo "${CLEAR}\c"
-			@echo "${GREEN}✅ Simple clean completed! ✨\n"
+			@${ECHO} "${CLEAR}\c"
+			@${ECHO} "${GREEN}✅ Simple clean completed! ✨\n"
 
 # Clean everything
 fclean: clean
 			@${S_NAME}
 			@${RM} ${NAME}
 			@sleep 0.3
-			@echo "${CLEAR}\c"
-			@echo "${GREEN}✅ Deep clean completed! ✨"
+			@${ECHO} "${CLEAR}\c"
+			@${ECHO} "${GREEN}✅ Deep clean completed! ✨"
 
 # Clear the screen
 clear:
-			@echo "${CLEAR}\c"
+			@${ECHO} "${CLEAR}\c"
 
 # Rebuild the program
 re: fclean all
