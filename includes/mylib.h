@@ -101,6 +101,7 @@ int		ft_is_prime(int nb);
 int		ft_factorial(int nb);
 int		ft_power(int nb, int power);
 int		ft_sqrt(int nb);
+int		get_random(void);
 
 // lst
 t_list	*ft_lstnew(void *content);
