@@ -6,7 +6,7 @@
 /*   By: rrouille <rrouille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:52:32 by rrouille          #+#    #+#             */
-/*   Updated: 2023/05/03 14:08:45 by rrouille         ###   ########.fr       */
+/*   Updated: 2023/08/29 19:53:09 by rrouille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ bool	found_new_line(t_list *stash)
 	{
 		if (((char *)stash->content)[i] == '\n')
 			return (true);
-	i++;
+		i++;
 	}
 	return (false);
 }
