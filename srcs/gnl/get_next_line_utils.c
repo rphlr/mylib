@@ -6,7 +6,7 @@
 /*   By: rrouille <rrouille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:52:32 by rrouille          #+#    #+#             */
-/*   Updated: 2023/08/29 19:53:09 by rrouille         ###   ########.fr       */
+/*   Updated: 2023/09/01 12:31:25 by rrouille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,17 +103,17 @@ void	generate_line(char **line, t_list *stash)
  * @return	Nothing needs to be returned.
  * @param	t_list	*stash : Pointer to the head of the linked list to free.
  */
-void	free_stash(t_list *stash)
-{
-	t_list	*current;
-	t_list	*next;
+// void	free_stash(t_list *stash)
+// {
+// 	t_list	*current;
+// 	t_list	*next;
 
-	current = stash;
-	while (current)
-	{
-		free(current->content);
-		next = current->next;
-		free(current);
-		current = next;
-	}
-}
+// 	current = stash;
+// 	while (current)
+// 	{
+// 		free(current->content);
+// 		next = current->next;
+// 		free(current);
+// 		current = next;
+// 	}
+// }
