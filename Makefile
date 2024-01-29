@@ -6,7 +6,7 @@
 #    By: rrouille <rrouille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:27:55 by rrouille          #+#    #+#              #
-#    Updated: 2024/01/29 15:44:41 by rrouille         ###   ########.fr        #
+#    Updated: 2024/01/29 18:42:33 by rrouille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,7 +92,9 @@ PROGRESS_BAR_LENGTH = 50
 all:		${NAME}
 
 ${NAME}:	${OBJS}
-			@printf "┌──────────\n├─>>> ${GREEN}${NAME}${ENDCOLOR} compiled!\n└──────────\n"
+			@printf "├─>>> ${GREEN}${NAME}${ENDCOLOR} compiled!\n"
+			@${AR} ${NAME} ${OBJS}
+			@ranlib ${NAME}
 
 ${OBJSDIR}/%.o:	${SRCSDIR}/%.c
 				@${MKDIR} ${OBJSDIR}
@@ -105,6 +107,7 @@ ${OBJSDIR}/%.o:	${SRCSDIR}/%.c
 					${CC} ${CFLAGS} -c $< -o $@ -I${HDRDIR}; \
 				fi
 				@printf "\33[2K"
+				
 
 ###############################################################################
 #                  ↓↓↓↓↓           UTILITIES           ↓↓↓↓↓                  #
@@ -152,38 +155,28 @@ git: fclean
 
 # Clean object files and executable
 clean:
-		@if [[ $(if $(filter r,${MAKECMDGOALS}),1,0) == "1" ]]; then \
-			printf "├──────────\n"; \
+		@if [ ${MAKECMDGOALS} != "fclean" ];  then \
+			if [ -d "./${OBJSDIR}" ]; then \
+				printf "│\tRemoving ${RED}${OBJSDIR}${ENDCOLOR} for ${YELLOW}${NAME}${ENDCOLOR}\n"; \
+				rm -rf ${OBJSDIR}; \
+			else \
+				printf "│\t${RED}${OBJSDIR}${ENDCOLOR} already removed for ${YELLOW}${NAME}${ENDCOLOR}!\n"; \
+			fi; \
 		else \
-			printf "┌──────────\n"; \
-		fi
-		@if [ -d "./${OBJSDIR}" ]; then \
-			printf "│\tRemoving ${CRED}${OBJSDIR}${ENDCOLOR} for ${YELLOW}${NAME}${ENDCOLOR}\n"; \
-			rm -rf ${OBJSDIR}; \
-		else \
-			printf "│\t${CRED}${OBJSDIR}${ENDCOLOR} already removed for ${YELLOW}${NAME}${ENDCOLOR}!\n"; \
-		fi
-		@if [[ $(if  $(filter fclean,${MAKECMDGOALS}),1,0) == "1" ]]; then \
-			printf ""; \
-		else \
-			printf "└──────────\n"; \
+			if [ -d "./${OBJSDIR}" ]; then \
+				printf "│\tRemoving ${RED}${OBJSDIR}${ENDCOLOR} for ${YELLOW}${NAME}${ENDCOLOR}\n"; \
+				rm -rf ${OBJSDIR}; \
+				printf "\033[A\033[2K"; \
+			fi; \
 		fi
 
 # Clean everything including the executable
 fclean: clean
 		@if [ -e "./${NAME}" ]; then \
-			if [[ $(if $(filter r,${MAKECMDGOALS}),1,0) == "1" ]]; then \
-				printf "│\tRemoving ${YELLOW}${NAME}${ENDCOLOR}\n├──────────\n"; \
-			else \
-				printf "│\tRemoving ${YELLOW}${NAME}${ENDCOLOR}\n└──────────\n"; \
-			fi; \
+			printf "│\tRemoving all ${YELLOW}${NAME}${ENDCOLOR} files and objects.\n"; \
 			rm -f ${NAME}; \
 		else \
-			if [[ $(if $(filter r,${MAKECMDGOALS}),1,0) == "1" ]]; then \
-				printf "│\t${YELLOW}${NAME}${ENDCOLOR} already removed!\n├──────────\n"; \
-			else \
-				printf "│\t${YELLOW}${NAME}${ENDCOLOR} already removed!\n└──────────\n"; \
-			fi; \
+			printf "│\t${YELLOW}${NAME}${ENDCOLOR} files and objects already removed!\n"; \
 		fi
 
 # Clear the screen
@@ -191,4 +184,4 @@ clear:
 			@${ECHO} "${CLEAR}\c"
 
 # Rebuild the program
-re: fclean all
+re: fclean .WAIT all
