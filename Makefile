@@ -6,7 +6,7 @@
 #    By: rrouille <rrouille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:27:55 by rrouille          #+#    #+#              #
-#    Updated: 2024/01/29 19:15:03 by rrouille         ###   ########.fr        #
+#    Updated: 2024/01/29 19:17:04 by rrouille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,7 +95,6 @@ all:		${NAME}
 
 ${NAME}:	${OBJS}
 			@if [ "$(COMPILATION_DONE)" -eq "1" ]; then \
-				printf "├──────────\n"; \
 				printf "│\tSources for ${GREEN}${NAME}${ENDCOLOR} done.\n"; \
 				printf "├──────────\n├─>>> ${GREEN}${NAME}${ENDCOLOR} compiled!\n└──────────\n"; \
 			else \
@@ -183,10 +182,10 @@ clean:
 # Clean everything including the executable
 fclean: clean
 		@if [ -e "./${NAME}" ]; then \
-			printf "│\tRemoving all ${YELLOW}${NAME}${ENDCOLOR} files and objects.\n"; \
+			printf "│\tRemoving all ${YELLOW}${NAME}${ENDCOLOR} files and ${RED}${OBJSDIR}${ENDCOLOR}.\n"; \
 			rm -f ${NAME}; \
 		else \
-			printf "│\t${YELLOW}${NAME}${ENDCOLOR} files and objects already removed!\n"; \
+			printf "│\t${YELLOW}${NAME}${ENDCOLOR} files and ${RED}${OBJSDIR}${ENDCOLOR} already removed!\n"; \
 		fi
 
 # Clear the screen
