@@ -6,7 +6,7 @@
 #    By: rrouille <rrouille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:27:55 by rrouille          #+#    #+#              #
-#    Updated: 2024/01/29 15:42:29 by rrouille         ###   ########.fr        #
+#    Updated: 2024/01/29 15:44:41 by rrouille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -98,10 +98,10 @@ ${OBJSDIR}/%.o:	${SRCSDIR}/%.c
 				@${MKDIR} ${OBJSDIR}
 				@${MKDIR} ${@D}
 				@if [[ $(if $(filter dbg,${MAKECMDGOALS}),1,0) == "1" ]]; then \
-					printf "│\t > ${CYAN}DEBUG${ENDCOLOR} Compiling ${CYAN}$<${ENDCOLOR} with ${CYAN}${DFLAGS}${ENDCOLOR} and ${CYAN}${LDFLAGS}${ENDCOLOR}...\r"; \
+					printf "│\t > ${YELLOW}DEBUG${ENDCOLOR} Compiling ${YELLOW}$<${ENDCOLOR} with ${YELLOW}${DFLAGS}${ENDCOLOR} and ${YELLOW}${LDFLAGS}${ENDCOLOR}...\r"; \
 					${CC} -D ${DFLAGS} -c $< -o $@ ${LDFLAGS}; \
 				else \
-					printf "│\t > Compiling ${CYAN}$<${ENDCOLOR} for ${GREEN}${NAME}${ENDCOLOR}...\r"; \
+					printf "│\t > Compiling ${YELLOW}$<${ENDCOLOR} for ${GREEN}${NAME}${ENDCOLOR}...\r"; \
 					${CC} ${CFLAGS} -c $< -o $@ -I${HDRDIR}; \
 				fi
 				@printf "\33[2K"
@@ -158,10 +158,10 @@ clean:
 			printf "┌──────────\n"; \
 		fi
 		@if [ -d "./${OBJSDIR}" ]; then \
-			printf "│\tRemoving ${CRED}${OBJSDIR}${ENDCOLOR} for ${CYAN}${NAME}${ENDCOLOR}\n"; \
+			printf "│\tRemoving ${CRED}${OBJSDIR}${ENDCOLOR} for ${YELLOW}${NAME}${ENDCOLOR}\n"; \
 			rm -rf ${OBJSDIR}; \
 		else \
-			printf "│\t${CRED}${OBJSDIR}${ENDCOLOR} already removed for ${CYAN}${NAME}${ENDCOLOR}!\n"; \
+			printf "│\t${CRED}${OBJSDIR}${ENDCOLOR} already removed for ${YELLOW}${NAME}${ENDCOLOR}!\n"; \
 		fi
 		@if [[ $(if  $(filter fclean,${MAKECMDGOALS}),1,0) == "1" ]]; then \
 			printf ""; \
@@ -173,16 +173,16 @@ clean:
 fclean: clean
 		@if [ -e "./${NAME}" ]; then \
 			if [[ $(if $(filter r,${MAKECMDGOALS}),1,0) == "1" ]]; then \
-				printf "│\tRemoving ${CYAN}${NAME}${ENDCOLOR}\n├──────────\n"; \
+				printf "│\tRemoving ${YELLOW}${NAME}${ENDCOLOR}\n├──────────\n"; \
 			else \
-				printf "│\tRemoving ${CYAN}${NAME}${ENDCOLOR}\n└──────────\n"; \
+				printf "│\tRemoving ${YELLOW}${NAME}${ENDCOLOR}\n└──────────\n"; \
 			fi; \
 			rm -f ${NAME}; \
 		else \
 			if [[ $(if $(filter r,${MAKECMDGOALS}),1,0) == "1" ]]; then \
-				printf "│\t${CYAN}${NAME}${ENDCOLOR} already removed!\n├──────────\n"; \
+				printf "│\t${YELLOW}${NAME}${ENDCOLOR} already removed!\n├──────────\n"; \
 			else \
-				printf "│\t${CYAN}${NAME}${ENDCOLOR} already removed!\n└──────────\n"; \
+				printf "│\t${YELLOW}${NAME}${ENDCOLOR} already removed!\n└──────────\n"; \
 			fi; \
 		fi
 
