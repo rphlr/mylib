@@ -6,7 +6,7 @@
 #    By: rrouille <rrouille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:27:55 by rrouille          #+#    #+#              #
-#    Updated: 2024/01/29 18:42:33 by rrouille         ###   ########.fr        #
+#    Updated: 2024/01/29 19:15:03 by rrouille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,6 +77,8 @@ CLEAR			= \033c
 # Clear line
 CLEARLN			= \r\033[K
 
+COMPILATION_DONE = 0
+
 # Progression bar
 START		=		${ECHO} "${YELLOW}Start of librairy compilation\n${ENDCOLOR}"
 END_COMP	=		${ECHO} "${GREEN}End of librairy compilation${ENDCOLOR}"
@@ -92,7 +94,14 @@ PROGRESS_BAR_LENGTH = 50
 all:		${NAME}
 
 ${NAME}:	${OBJS}
-			@printf "├─>>> ${GREEN}${NAME}${ENDCOLOR} compiled!\n"
+			@if [ "$(COMPILATION_DONE)" -eq "1" ]; then \
+				printf "├──────────\n"; \
+				printf "│\tSources for ${GREEN}${NAME}${ENDCOLOR} done.\n"; \
+				printf "├──────────\n├─>>> ${GREEN}${NAME}${ENDCOLOR} compiled!\n└──────────\n"; \
+			else \
+				printf "├──────────\n"; \
+				printf "│\tNothing to be done for ${GREEN}${NAME}${ENDCOLOR}.\n└──────────\n"; \
+			fi
 			@${AR} ${NAME} ${OBJS}
 			@ranlib ${NAME}
 
@@ -106,6 +115,7 @@ ${OBJSDIR}/%.o:	${SRCSDIR}/%.c
 					printf "│\t > Compiling ${YELLOW}$<${ENDCOLOR} for ${GREEN}${NAME}${ENDCOLOR}...\r"; \
 					${CC} ${CFLAGS} -c $< -o $@ -I${HDRDIR}; \
 				fi
+				$(eval COMPILATION_DONE = 1)
 				@printf "\33[2K"
 				
 
