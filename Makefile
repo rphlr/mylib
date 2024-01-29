@@ -6,18 +6,18 @@
 #    By: rrouille <rrouille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 17:27:55 by rrouille          #+#    #+#              #
-#    Updated: 2023/08/14 15:22:41 by rrouille         ###   ########.fr        #
+#    Updated: 2024/01/29 15:42:29 by rrouille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Folders
-SRCDIR		= srcs
-OBJDIR		= objs/
+SRCSDIR		= srcs
+OBJSDIR		= objs
 HDRDIR		= includes
 
 # Files
-SRCS		= ${shell find ${SRCDIR} -name '*.c'}
-OBJS		= ${SRCS:${SRCDIR}%.c=${OBJDIR}%.o}
+SRCS		= ${shell find ${SRCSDIR} -type f -name '*.c'}
+OBJS		= ${SRCS:${SRCSDIR}/%.c=${OBJSDIR}/%.o}
 NAME		= mylib.a
 
 # Compilation
@@ -30,7 +30,7 @@ OS				:= ${shell uname}
 # Usefuls commands
 RM			= rm -rf
 MV			= mv
-MKDIR		= mkdir
+MKDIR		= mkdir -p
 
 # If using Linux ${ECHO} command must be `${ECHO} -e`
 ifeq ($(OS),Linux)
@@ -43,11 +43,6 @@ endif
 
 # Archive
 AR			= ar rcs
-
-# Directories
-SRCSDIR			= srcs/
-OBJSDIR			= objs/
-HDRDIR			= includes/
 
 # Colors for the terminal
 GRAY			= \033[0;90m
@@ -82,18 +77,6 @@ CLEAR			= \033c
 # Clear line
 CLEARLN			= \r\033[K
 
-# Sources
-FTISDIR		= is
-FTMEMDIR	= mem
-FTPUTDIR	= put
-FTTODIR		= to
-FTSTRDIR	= str
-FTLSTDIR	= lst
-FTMATHDIR	= math
-FTPRINTDIR	= print
-FTGNLDIR	= gnl
-FTGCDIR		= gc
-
 # Progression bar
 START		=		${ECHO} "${YELLOW}Start of librairy compilation\n${ENDCOLOR}"
 END_COMP	=		${ECHO} "${GREEN}End of librairy compilation${ENDCOLOR}"
@@ -106,31 +89,22 @@ BS_N		=		${ECHO} "\n"
 PROGRESS_BAR_LENGTH = 50
 
 # First rule
-all:		clear start ${NAME}
-
-start:
-			@${START}
+all:		${NAME}
 
 ${NAME}:	${OBJS}
-			@${BS_N}
-			@${AR} ${NAME} ${OBJS}
-			@ranlib ${NAME}
-			@${END_COMP}
+			@printf "┌──────────\n├─>>> ${GREEN}${NAME}${ENDCOLOR} compiled!\n└──────────\n"
 
-${OBJDIR}%.o : ${SRCDIR}%.c
-			@mkdir -p ${OBJDIR}
-			@mkdir -p ${OBJDIR}${FTISDIR}
-			@mkdir -p ${OBJDIR}${FTMEMDIR}
-			@mkdir -p ${OBJDIR}${FTPUTDIR}
-			@mkdir -p ${OBJDIR}${FTTODIR}
-			@mkdir -p ${OBJDIR}${FTSTRDIR}
-			@mkdir -p ${OBJDIR}${FTLSTDIR}
-			@mkdir -p ${OBJDIR}${FTMATHDIR}
-			@mkdir -p ${OBJDIR}${FTPRINTDIR}
-			@mkdir -p ${OBJDIR}${FTGNLDIR}
-			@mkdir -p ${OBJDIR}${FTGCDIR}
-			@${CHARG_LINE}
-			@${CC} ${CFLAGS} -I ${HDRDIR} -c $< -o $@
+${OBJSDIR}/%.o:	${SRCSDIR}/%.c
+				@${MKDIR} ${OBJSDIR}
+				@${MKDIR} ${@D}
+				@if [[ $(if $(filter dbg,${MAKECMDGOALS}),1,0) == "1" ]]; then \
+					printf "│\t > ${CYAN}DEBUG${ENDCOLOR} Compiling ${CYAN}$<${ENDCOLOR} with ${CYAN}${DFLAGS}${ENDCOLOR} and ${CYAN}${LDFLAGS}${ENDCOLOR}...\r"; \
+					${CC} -D ${DFLAGS} -c $< -o $@ ${LDFLAGS}; \
+				else \
+					printf "│\t > Compiling ${CYAN}$<${ENDCOLOR} for ${GREEN}${NAME}${ENDCOLOR}...\r"; \
+					${CC} ${CFLAGS} -c $< -o $@ -I${HDRDIR}; \
+				fi
+				@printf "\33[2K"
 
 ###############################################################################
 #                  ↓↓↓↓↓           UTILITIES           ↓↓↓↓↓                  #
@@ -172,26 +146,45 @@ git: fclean
 			@git push
 			@${ECHO} "${GREEN}All changed are now on github!${ENDCOLOR}"
 
-###############################################################################
-#                   ↓↓↓↓↓           CLEANING           ↓↓↓↓↓                  #
-###############################################################################
+################################################################################
+#                       Cleaning and Maintenance                               #
+################################################################################
 
 # Clean object files and executable
 clean:
-			@${ECHO} "${CLEAR}\c"
-			@${S_OBJS}
-			@${RM} objs/
-			@sleep 0.3
-			@${ECHO} "${CLEAR}\c"
-			@${ECHO} "${GREEN}✅ Simple clean completed! ✨\n"
+		@if [[ $(if $(filter r,${MAKECMDGOALS}),1,0) == "1" ]]; then \
+			printf "├──────────\n"; \
+		else \
+			printf "┌──────────\n"; \
+		fi
+		@if [ -d "./${OBJSDIR}" ]; then \
+			printf "│\tRemoving ${CRED}${OBJSDIR}${ENDCOLOR} for ${CYAN}${NAME}${ENDCOLOR}\n"; \
+			rm -rf ${OBJSDIR}; \
+		else \
+			printf "│\t${CRED}${OBJSDIR}${ENDCOLOR} already removed for ${CYAN}${NAME}${ENDCOLOR}!\n"; \
+		fi
+		@if [[ $(if  $(filter fclean,${MAKECMDGOALS}),1,0) == "1" ]]; then \
+			printf ""; \
+		else \
+			printf "└──────────\n"; \
+		fi
 
-# Clean everything
+# Clean everything including the executable
 fclean: clean
-			@${S_NAME}
-			@${RM} ${NAME}
-			@sleep 0.3
-			@${ECHO} "${CLEAR}\c"
-			@${ECHO} "${GREEN}✅ Deep clean completed! ✨"
+		@if [ -e "./${NAME}" ]; then \
+			if [[ $(if $(filter r,${MAKECMDGOALS}),1,0) == "1" ]]; then \
+				printf "│\tRemoving ${CYAN}${NAME}${ENDCOLOR}\n├──────────\n"; \
+			else \
+				printf "│\tRemoving ${CYAN}${NAME}${ENDCOLOR}\n└──────────\n"; \
+			fi; \
+			rm -f ${NAME}; \
+		else \
+			if [[ $(if $(filter r,${MAKECMDGOALS}),1,0) == "1" ]]; then \
+				printf "│\t${CYAN}${NAME}${ENDCOLOR} already removed!\n├──────────\n"; \
+			else \
+				printf "│\t${CYAN}${NAME}${ENDCOLOR} already removed!\n└──────────\n"; \
+			fi; \
+		fi
 
 # Clear the screen
 clear:
