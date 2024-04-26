@@ -35,16 +35,12 @@ void	prepare_stash_from_file(int fd, t_list **stash)
 		num_bytes = read(fd, buffer, BUFFER_SIZE);
 		if ((*stash == NULL && num_bytes == 0) || num_bytes == -1)
 		{
-			// free(buffer);
-			// if (num_bytes == -1)
-				// free_stash(*stash);
 			*stash = NULL;
 			return ;
 		}
 		buffer[num_bytes] = '\0';
 		append_buffer_to_stash(stash, buffer, num_bytes);
 	}
-	// free(buffer);
 }
 
 /**
@@ -177,7 +173,6 @@ char	*get_next_line(int fd)
 	if (line[0] == '\0')
 	{
 		stash[fd] = NULL;
-		// ft_gc_free(line);
 		return (NULL);
 	}
 	return (line);
